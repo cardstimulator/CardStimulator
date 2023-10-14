@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div  class="econtainer" >
+  <div id="balance" class="accountBalance">Balance: ₦<span id="balanceAmount">0.00</span></div>
+    <img src="./cardoo.jpg" width="100%" height="150px">
+    <div id="London" class="tabcontent">
+  <div class="container">
+    <!-- <div class="form-group">
+      <label for="amount" class="form-label">Amount:</label>
+      <input type="number" class="form-control" id="amount" placeholder="₦0.00">
+    </div> -->
+    <div class="form-group">
+        <label for="cardNumber" class="form-label">Card Number:</label>
+        <input type="number" class="form-control" id="cardNumber" placeholder="cardNumber">
+      </div>
+      <div class="form-group">
+        <label for="expiryDate" class="form-label">Expiry Date:</label>
+        <input type="07/22" class="form-control" id="expiryDate" placeholder="9/23">
+      </div>
+      <div class="form-group">
+        <label for="cvv" class="form-label">CVV:</label>
+        <input type="password" class="form-control" id="cvv" placeholder="cvv">
+      </div>
+        <!-- <button class="btn btn-primary" onclick="confirmCard()" type="submit">Confirm Card</button> -->
+        <p id="message">Please fill in all the card details, including the amount.</p>
+    </div>
+    <!-- <div id="balance" class="accountBalance">Balance: ₦<span id="balanceAmount">0.00</span></div> -->
+  <label for="amountInput">Amount: ₦</label>
+  <input type="text" id="amountInput" placeholder="₦0.00">
+  <button id="paymentButton">Make Payment</button>
+    </div>
+    <div id="Paris" class="tabcontent">
+        <div class="container">
+          <form id="transferForm">
+            <div class="form-group">
+              <label for="bank" >Select Bank:</label>
+
+              <select id="bank" name="bank" placeholder="select bank" >
+                <option value="" disabled selected>Select</option>
+                <option value="firstbank">
+                  <img class="bank-logo" src="./download.png" alt="First Bank"> First Bank
+                </option>
+                <option value="uba">
+                  <img class="bank-logo" src="uba-logo.png" alt="UBA"> UBA
+                </option>
+                <option value="zenith">
+                  <img class="bank-logo" src="zenith-logo.png" alt="Zenith Bank"> Zenith Bank
+                </option>
+                <option value="opay"> OPay</option>
+                <option value="palmpay">PalmPay</option>
+                <option value="skybank">skybank</option>
+                <option value="ecobank">ecobank</option>
+                <option value="Zenith">zenith</option>
+                <option value="fidelity">fidelity</option>
+                <option value="firstbank">firstbank</option>
+                <option value="Accessbank">Accessbank</option>
+                <option value="Gtbank">Gtbank</option>
+                <option value="Kuda">Kuda</option>
+                <option value="Wema">Wema</option>
+                <option value="Unionbank">Unionbank</option>
+                <option value="Unity">Unity</option>
+                <!-- Add more bank options here -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="amount">Amount (₦):</label>
+              <input type="number" id="amount" name="amount" required >
+            </div>
+            <div class="form-group2">
+              <input type="text" id="accountNumber" placeholder="Enter Account Number" required>
+              <button id="lookupButton">Search</button>
+            </div>
+              <p id="result"></p>
+
+            <!-- <button class="btn btn-primary" onclick="initiateTransfer()" type="submit" id="myBtn">Initiate Transfer</button> -->
+            <form id="payment-form">
+              <!-- Your payment form fields here -->
+              <button type="button" id="submit-button">Submit Payment</button>
+          </form>
+      
+          <div class="processing-message" id="processing-message">Payment Processing...</div>
+          <div class="success-message" id="success-message">
+              Payment Successful <i class="check-icon">&#10003;</i>
+          </div>
+      
+            <p id="message1">Transfer initiated successfully.</p>
+          </form>
+        </div>
+    </div>
+    <div class="tab">
+      <button class="tablinks" onclick="openCity(event, 'London')"><img src="./card.png" class="cum"></button>
+      <button class="tablinks" onclick="openCity(event, 'Paris')"><img src="./withdrawal.jpg" class="cum"></button>
+  </div>
+  </div>
+</div>
+</div>
+</div>
+<div>
+
+</div>
+    <script>
+        function confirmCard() {
+          var cardNumber = document.getElementById("cardNumber").value;
+          var expiryDate = document.getElementById("expiryDate").value;
+          var cvv = document.getElementById("cvv").value;
+          var amount = document.getElementById("amount").value;
+          var messageElement = document.getElementById("message");
+    
+          if (cardNumber !== "" && expiryDate !== "" && cvv !== "" && amount !== "") {
+            messageElement.textContent = "Funded, wait for 5 minutes for reflection.";
+            messageElement.style.color = "green";
+          } else {
+            messageElement.textContent = "Please fill in all the card details, including the amount.";
+            messageElement.style.color = "red";
+          }
+    
+          messageElement.style.display = "block";
+        }
+      </script>
+
+<script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+  
+  // Get the button that opens the modal
+  var btn = document.getElementById("myBtn");
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks the button, open the modal 
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+  
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+    els
+  }
+  </script>
+
+      <script>
+        function initiateTransfer() {
+          var selectedBank = document.getElementById("bank").value;
+          var recipientAccount = document.getElementById("recipientAccount").value;
+          var amount = document.getElementById("amount").value;
+          var messageElement = document.getElementById("message1");
+    
+          if (recipientName !== "" && selectedBank !== "" && recipientAccount !== "" && amount !== "") {
+            messageElement.textContent = "Transfer initiated successfully.";
+            messageElement.style.color = "green";
+          } else {
+            messageElement.textContent = "Please fill in all the required fields.";
+            messageElement.style.color = "red";
+          }
+    
+          messageElement.style.display = "block";
+        }
+      </script>
+      <script> function openCity(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+      }</script>
+      <script>
+        // Simulated data source (you would replace this with a real database)
+        const accountData = {
+            "6311806514": "Samuel Frank",
+            "2211732633": "Joshua Martins",
+            // Add more account numbers and names as needed
+        };
+
+        const accountNumberInput = document.getElementById("accountNumber");
+        const lookupButton = document.getElementById("lookupButton");
+        const resultElement = document.getElementById("result");
+
+        lookupButton.addEventListener("click", () => {
+            const accountNumber = accountNumberInput.value;
+            const accountName = accountData[accountNumber];
+
+            if (accountName) {
+                resultElement.textContent = `Account Holder: ${accountName}`;
+            } else {
+                resultElement.textContent = "Account not found";
+            }
+        });
+    </script>
+
+<script>
+  // Get the elements
+  const balanceAmount = document.getElementById("balanceAmount");
+  const amountInput = document.getElementById("amountInput");
+  const paymentButton = document.getElementById("paymentButton");
+
+  // Initialize the balance
+  let balance = 0.00;
+
+  // Function to simulate payment and update balance
+  function simulatePayment() {
+    const enteredAmount = parseFloat(amountInput.value);
+    if (!isNaN(enteredAmount)) {
+      // Perform payment processing (simulated)
+      setTimeout(() => {
+        alert("Payment Successful");
+        balance += enteredAmount;
+        balanceAmount.textContent = balance.toFixed(2);
+        amountInput.value = ""; // Clear the input field
+      }, 2000); // Simulate a 2-second payment process
+    }
+  }
+
+  // Add a click event listener to the payment button
+  paymentButton.addEventListener("click", simulatePayment);
+</script>
+
+<script>
+
+const paymentAlert = document.getElementById('paymentAlert');
+
+paymentButton.addEventListener('click', () => {
+// Simulate a payment process (you can replace this with your actual payment logic)
+// For demonstration, we use a setTimeout to mimic a delay.
+simulatePaymentProcess()
+  .then(() => {
+    paymentAlert.style.display = 'block';
+    setTimeout(() => {
+      paymentAlert.style.display = 'none';
+    }, 2000); // Hide the alert after 2 seconds
+  })
+  .catch((error) => {
+    console.error('Payment failed:', error);
+  });
+});
+
+function simulatePaymentProcess() {
+return new Promise((resolve, reject) => {
+  // Simulate payment success after a delay
+  setTimeout(() => {
+    resolve();
+  }, 1000); // Delay of 1 second (simulating payment processing)
+});
+}
+
+</script>
+
+<script>
+  document.getElementById("submit-button").addEventListener("click", function() {
+      // Display the processing message
+      var processingMessage = document.getElementById("processing-message");
+      processingMessage.style.display = "block";
+      
+      // Simulate payment processing with a delay
+      setTimeout(function() {
+          // Hide the processing message and show the success message
+          processingMessage.style.display = "none";
+          displaySuccessMessage();
+      }, 3000); // Simulating a 3-second payment processing time
+  });
+
+  function displaySuccessMessage() {
+      var successMessage = document.getElementById("success-message");
+      successMessage.style.display = "block";
+
+      // Show the check icon
+      var checkIcon = document.querySelector(".check-icon");
+      checkIcon.style.display = "inline";
+
+      // Hide the success message and check icon after a few seconds (you can adjust the delay)
+      setTimeout(function() {
+          successMessage.style.display = "none";
+          checkIcon.style.display = "none";
+      }, 3000); // 3 seconds
+  }
+</script>
+
+
+
+</body>
+</html>
